@@ -13,9 +13,12 @@ function initialize() {
 }
 
 function mostraMarcadores(titulo, lat, lon) {
+    console.log("passou no mostraMarcadores");
     var mapa = new googleMapas();
     mapa.inicializa();
-    mapa.criaMarcadores(titulo, lat, lon);
+
+    mapa.criaMarcadores(lat, lon);
+
 }
 
 var googleMapas = function () {
@@ -29,6 +32,20 @@ var googleMapas = function () {
 
         map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
         
+        var marker = new google.maps.Marker({
+                position: new google.maps.LatLng( -15.731457491108594, -47.900390625),
+                map: map,
+                title: 'titulo'
+        });
+        
+        this.criaMarcadores = function(lat, lon) {
+            console.log("chegou no criaMarcadores", lon, lat);
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lon, lat),
+                title: "Meu ponto personalizado! :-D",
+                map: map
+            });
+        }
         //Server para criar um Marcador
         // this.mostraMarcadores = function(titulo) {
         //     var marker = new google.maps.Marker({
@@ -48,22 +65,15 @@ var googleMapas = function () {
             });
         }
 
-        this.criaMarcadores = function(titulo, lat, lon) {
-            console.log(titulo);
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lon),
-                map: map,
-                title: titulo
-            });
-        }
+        
         
     }
 
     preencheLatLon = function(location){
-        console.log(location.pb);
+        console.log(location);
         // Preenche os Campos Latitude e Longitude do formulario
-        $("#id_marcador_form_lat").val(location.pb);
-        $("#id_marcador_form_lon").val(location.qb);
+        $("#id_marcador_form_lat").val(location.mb);
+        $("#id_marcador_form_lon").val(location.lb);
     }
     //Cria um ponto onde foi clicado
     placeMarker = function(location) {

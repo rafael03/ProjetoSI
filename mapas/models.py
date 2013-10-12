@@ -16,8 +16,8 @@ class Marcadores(models.Model):
 	marcador_nome = models.CharField(verbose_name=u'Nome:', max_length=100)
 	marcador_tipo = models.CharField(verbose_name=u'Tipo:', max_length=100)
 	marcador_endereco = models.CharField(verbose_name=u'Endereco:', max_length=100)
-	marcador_lat = models.FloatField(verbose_name=u'Latitude:', max_length=100)	
-	marcador_lon = models.FloatField(verbose_name=u'Longitude:', max_length=100)
+	marcador_lat = models.CharField(verbose_name=u'Latitude:', max_length=100)	
+	marcador_lon = models.CharField(verbose_name=u'Longitude:', max_length=100)
 	data = models.DateTimeField(verbose_name=u'Data:', auto_now_add=True)
 
 class MarcadoresForm(forms.Form):

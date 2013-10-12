@@ -62,4 +62,3 @@ def gera_graficos(request):
         context = {}
         context['ocorrencias'] = lista
         return render(request, 'gera_graficos.html', context)
-

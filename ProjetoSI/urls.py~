@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^mostra_pontos/', 'mapas.views.mostra_pontos', name='mostra_pontos'),
 
     # URL'S Referente aos Graficos
-    url(r'^graficos/','mapas.views.gera_graficos', name='graficos'),
+    url(r'^graficos/','mapa.views.gera_graficos', name='graficos'),
 
     # URL'S Referente aos Usuarios
     url(r'^ususario/', 'usuarios.views.index', name='usuario'),
