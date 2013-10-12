@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="row-fluid">
+<div class="span12 divMapa" id="map_canvas">
+
+</div>
+<div class="barra-lateral">
+	<button class="btn btn-primary" id="criarMarker">
+		<span>
+			<i class="icon-screenshot icon-white"></i>
+			  Registrar Nova Ocorrência
+		</span>
+	</button>
+	<button class="hide" href="#myModal" role="button" data-toggle="modal" id="buttonPopup">
+		  Ira Chamar o Formulario
+	</button>
+</div>
+</div>
+
+				<!-- Parte responsavel pelo Pop na tela -->
+				<!-- <a href="#myModal" role="button" class="btn hide" data-toggle="modal" id="buttonPopup">Launch demo modal</a> -->
+
+				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							×
+						</button>
+						<h3 id="myModalLabel">
+							<center>
+								Inserir Nova Ocorrência
+							</center>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<form action="/mapa/" method="post">
+							{% csrf_token %}
+								{% for campos in formulario %}
+								<div class="control-group {% if field.errors %} error {% endif %}">
+									{{ campos.label_tag }}
+									{{ campos }}
+									{% if campos.errors %}
+										<div class="alert alert-error">
+											{{ campos.errors }}
+										</div>
+									{% endif %}
+								</div>
+							{% endfor %}
+							<div class="modal-footer">
+						<button type="reset" class="btn" data-dismiss="modal" aria-hidden="true" id="buttonCancelar">
+							Cancelar
+						</button>
+						<button type="submit" class="btn btn-primary" id="buttonSalvar">
+							Salvar
+						</button>
+					</div>
+						</form>
+					</div>
+					
+				</div>
+{% endblock %}
+

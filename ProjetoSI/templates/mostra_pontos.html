@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="row-fluid">
+<div class="span12 divMapa" id="map_canvas">
+
+</div>
+<div class="barra-lateral">
+	<button class="btn btn-primary" id="criarMarker">
+		<span>
+			<i class="icon-screenshot icon-white"></i>
+			  Registrar Nova Ocorrência
+		</span>
+	</button>
+	<button class="hide" href="#myModal" role="button" data-toggle="modal" id="buttonPopup">
+		  Ira Chamar o Formulario
+	</button>
+</div>
+</div>
+<script>
+	{% for lista in ocorrencias %}
+		mostraMarcadores('{{lista.marcador_nome}}', '{{lista.marcador_lat}}', '{{lista.marcador_lon}}');
+	// var marker = new google.maps.Marker({
+ //            position: new google.maps.LatLng('{{lista.marcador_lat}}','{{lista.marcador_lon}}' ),
+ //            map: map,
+ //            title: '{{lista.marcador_nome}}'
+ //        });
+	// 	console.log('{{lista.marcador_nome}}');
+			// <tr>
+			// 	<td>{{lista.id}}</td>
+				// <td>{{lista.marcador_tipo}}</td>
+				// <td>{{lista.marcador_endereco}}</td>
+				// <td>{{lista.marcador_lat}}</td>
+				// <td>{{lista.marcador_lon}}</td>
+				// <td>{{lista.data}}</td>
+		{% endfor %}
+		
+</script>
+{% endblock %}
+

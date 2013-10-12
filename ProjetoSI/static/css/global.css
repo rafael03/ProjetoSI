@@ -1,0 +1,59 @@
+#divTitulo {
+	background: whiteSmoke;
+}
+
+#barraEsquerda{
+	background: black;
+}
+
+#divRodape {
+	background: #2D2D2D;
+	font-size: 24px;
+/*	position: absolute;*/
+	font: 13px/27px Arial,sans-serif;
+	color: #F1F1F1;
+}
+
+.corpo {
+	top: 50px;
+	position: relative;
+}
+
+.espaco_mapa{
+	height: 100%;
+	width: 1400px;
+	position: relative;
+	right: 1px;
+}
+.divMapa {
+	height: 800px;
+	width: 100%;
+}
+
+/*Referente a caixa flutuante*/
+.rightHome { 
+	width: 270px;
+	/*display: table;*/
+	float: right;
+	position: relative;
+	/*z-index: 10;*/
+	height: auto;
+	/*top: -710px;*/
+	top: -735px;
+}
+.menu {
+	height: 5%;
+	float: right;
+	position: relative;
+	width: 270px;
+	z-index: 10;
+	right: 50px;
+}
+
+.barra-lateral {
+	right: 45%;
+	height: auto;
+	width: auto;
+	position: absolute;
+	top: 8%;
+}

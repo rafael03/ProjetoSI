@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="span12 divMapa" id="">
+	<center>
+		<div class="alert alert-success">
+		<h1>Lista de Ocorrências</h1>
+		</div>
+	</center>
+	<table class="table table-bordered table-striped table-hover">
+		<tr>
+			<td>ID</td>
+			<td>Titulo</td>
+			<td>Tipo</td>
+			<td>Endereço</td>
+			<td>Latitude</td>
+			<td>Longitude</td>
+			<td>Data</td>
+		</tr>
+		{% for lista in ocorrencias %}
+			<tr>
+				<td>{{lista.id}}</td>
+				<td>{{lista.marcador_nome}}</td>
+				<td>{{lista.marcador_tipo}}</td>
+				<td>{{lista.marcador_endereco}}</td>
+				<td>{{lista.marcador_lat}}</td>
+				<td>{{lista.marcador_lon}}</td>
+				<td>{{lista.data}}</td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock %}

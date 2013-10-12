@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<div class="row-fluid">
+        <div class="span3">
+        </div>
+        <div class="span8" id="">
+			<center>
+				<h1>Formulario para Cadastro</h1>
+			</center>
+			<div class="row-fluid">
+				<div class="span5">
+					<form action="/usuario/cadastro/" method="post">
+					{% csrf_token %}
+					
+					{% for field in form %}
+					<div class="control-group {% if field.errors %} error {% endif %}">
+						{{ field.label_tag }}
+						{{ field }}
+						{% if field.errors %}
+						<div class="alert alert-error">
+							{{ field.errors }}
+						</div>
+						{% endif %}
+
+					</div>
+					{% endfor %}
+
+					<div class="control-group">
+						<center>
+							<button class="btn btn-large btn-primary" type="submmit" onclick="passa_valor()">
+								Salvar
+							</button>
+							<button class="btn btn-large btn-danger" type="reset">
+								Limpar
+							</button>
+						</center>
+					</div>
+				</form>
+
+			</div>
+		</div>
+		</div>
+	</div>
+{% endblock %}
