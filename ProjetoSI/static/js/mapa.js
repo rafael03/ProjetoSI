@@ -1,13 +1,16 @@
 var map;
+var ponteiro = 'move';
+
 function initialize() {
     var mapa = new googleMapas();
     mapa.inicializa();
-    // console.log(mapa.name);
 
     //Chama uma funcao ao clicar no botão central
     $("#criarMarker").click(function(){
         console.log("PAssou no click");
+        ponteiro = 'wait';
         mapa.mostraPonto();
+        
     });
 
 }
@@ -16,7 +19,6 @@ function mostraMarcadores(titulo, lat, lon) {
     console.log("passou no mostraMarcadores");
     var mapa = new googleMapas();
     mapa.inicializa();
-
     mapa.criaMarcadores(lat, lon);
 
 }
@@ -27,9 +29,11 @@ var googleMapas = function () {
         var mapOptions = {
             zoom: 12,
             center : new google.maps.LatLng(-15.780, -47.900), //cordenadas
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            streetViewControl: true,
+            draggingCursor: ponteiro
         }
-
+		console.log(ponteiro);
         map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
         
         var marker = new google.maps.Marker({

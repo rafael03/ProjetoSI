@@ -23,6 +23,7 @@ def cadastra_ocorrencia(request):
             marcador = Marcadores()
             marcador.marcador_nome = request.POST['marcador_form_nome']
             marcador.marcador_tipo = request.POST['marcador_form_tipo']
+            marcador.marcador_descricao = request.POST['marcador_form_descricao']
             marcador.marcador_endereco = request.POST['marcador_form_endereco']
             marcador.marcador_lat = request.POST['marcador_form_lat']
             marcador.marcador_lon = request.POST['marcador_form_lon']
