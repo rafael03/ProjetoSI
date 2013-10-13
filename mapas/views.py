@@ -57,10 +57,21 @@ def mapa(request):
 								context,
 								RequestContext(request))
 
+#def gera_graficos(request):
+#    if request.method == 'GET':
+##        lista = Marcadores.objects.all()
+#        context = {}
+##        context['ocorrencias'] = lista
+#
+#        context['ocorrencias'] = Marcadores.objects.raw('SELECT id, marcador_nome, marcador_descricao FROM mapas_marcadores')
+#        print '>>>>>>>>>>>',context['ocorrencias']
+#        return render(request, 'gera_graficos.html', context)
+    
+    
 def gera_graficos(request):
     if request.method == 'GET':
-        lista = Marcadores.objects.all()
         context = {}
-        context['ocorrencias'] = lista
+        consulta = Marcadores.objects.raw('SELECT id, count(id) AS contagem FROM mapas_marcadores GROUP BY marcador_tipo')
+        context['ocorrencias'] = consulta
         return render(request, 'gera_graficos.html', context)
 
