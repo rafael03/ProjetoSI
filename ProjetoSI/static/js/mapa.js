@@ -8,7 +8,6 @@ function initialize() {
     //Chama uma funcao ao clicar no botão central
     $("#criarMarker").click(function(){
         console.log("PAssou no click");
-        ponteiro = 'wait';
         mapa.mostraPonto();
         
     });
@@ -33,14 +32,14 @@ var googleMapas = function () {
             streetViewControl: true,
             draggingCursor: ponteiro
         }
-		console.log(ponteiro);
+
         map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
         
-        var marker = new google.maps.Marker({
-                position: new google.maps.LatLng( -15.731457491108594, -47.900390625),
-                map: map,
-                title: 'titulo'
-        });
+        // var marker = new google.maps.Marker({
+                // position: new google.maps.LatLng( -15.731457491108594, -47.900390625),
+                // map: map,
+                // title: 'titulo'
+        // });
         
         this.criaMarcadores = function(lat, lon) {
             console.log("chegou no criaMarcadores", lon, lat);
@@ -80,14 +79,14 @@ var googleMapas = function () {
         $("#id_marcador_form_lon").val(location.lb);
     }
     //Cria um ponto onde foi clicado
-    placeMarker = function(location) {
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
-        // $("#buttonPopup").bind();
-        console.log(marker.position);
-    }
+    // placeMarker = function(location) {
+        // var marker = new google.maps.Marker({
+            // position: location,
+            // map: map
+        // });
+        // // $("#buttonPopup").bind();
+        // console.log(marker.position);
+    // }
 
     
 }

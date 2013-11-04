@@ -7,10 +7,12 @@
 		<h1>Lista de Ocorrências</h1>
 		</div>
 	</center>
+	{{ocorrencias.nome}}
 	<table class="table table-bordered table-striped table-hover">
 		<tr>
 			<td>ID</td>
 			<td>Titulo</td>
+			<td>Gravidades</td>
 			<td>Tipo</td>
 			<td>Endereço</td>
 			<td>Latitude</td>
@@ -18,9 +20,11 @@
 			<td>Data</td>
 		</tr>
 		{% for lista in ocorrencias %}
+			{{lista.nome}}
 			<tr>
 				<td>{{lista.id}}</td>
 				<td>{{lista.marcador_nome}}</td>
+				<td>{{lista.marcador_nivel}}</td>
 				<td>{{lista.marcador_tipo}}</td>
 				<td>{{lista.marcador_endereco}}</td>
 				<td>{{lista.marcador_lat}}</td>

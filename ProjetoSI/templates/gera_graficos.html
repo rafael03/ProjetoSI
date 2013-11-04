@@ -24,13 +24,19 @@
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
         data.addRows([
-        	{% for lista in ocorrencias %}
-          		['{{lista.marcador_nome}}', {{lista.contagem}}],
+        	{% for nivel in ocorrencias %}
+          		{% if lista.marcador_nivel == '1' %}
+					['Baixo', {{nivel.contagem}}],
+				{% elif lista.marcador_nivel == '2' %}
+					['Medio', {{nivel.contagem}}],
+				{% else %}
+					['Grave', {{nivel.contagem}}],
+				{% endif %}
           	{% endfor %}
         ]);
-		
+
         // Set chart options
-        var options = {'title':'Principais problemas pela cidade',
+        var options = {'title':' Índice de Gravidade dos problemas pela cidade',
                        'width':800,
                        'height':600,
                         };
@@ -43,12 +49,18 @@
 
     <!--Div that will hold the pie chart-->
     <div id="chart_div"></div>
-
 <div class="row-container">
+	{% for lista in ocorrencias %}
+	{% if lista.marcador_nivel == '1' %}
+                <h1> heloo </h1>
+            {% endif %}
+	{% endfor %}
+	 
 	<table class="table table-bordered table-striped table-hover">
 		<tr>
 			<td>ID</td>
 			<td>Titulo</td>
+			<td>Gravidade</td>
 			<td>Tipo</td>
 			<td>Endereço</td>
 			<td>Latitude</td>
@@ -57,12 +69,19 @@
 			<td>Contagem</td>
 		</tr>
 		{% for lista in ocorrencias %}
-            {% if lista.marcador_tipo == 3 %}
-                <h1> {{lista.marcador_endereco}} </h1>
-            {% endif %}
+           
 			<tr>
 				<td>{{lista.id}}</td>
-				<td>{{lista.marcador_nome}}</td>
+				<td id='nome'>{{lista.marcador_nome}}</td>
+				
+					{% if lista.marcador_nivel == '1' %}
+						<td id='nivel'>Baixo</td>
+					{% elif lista.marcador_nivel == '2' %}
+						<td id='nivel'>Medio</td>
+					{% else %}
+						<td id='nivel'>Grave</td>
+					{% endif %}
+				
 				<td>{{lista.marcador_tipo}}</td>
 				<td>{{lista.marcador_endereco}}</td>
 				<td>{{lista.marcador_lat}}</td>
@@ -72,7 +91,19 @@
 			</tr>
 		{% endfor %}
 	</table>
-
+<script>
+		nivel = $("#nivel").text()
+		console.log(nivel)
+		switch (nivel){
+		case 1:
+			$("#nivel").text() = 'Baixo'
+		case 2:
+			valor_nivel = 'Medio'
+		case 3:
+			valor_nivel = 'Grave'		
+		}
+		$("#nivel").val() = valor_nivel
+	</script>
 </div>
 {% endblock %}
 

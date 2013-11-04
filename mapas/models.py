@@ -11,10 +11,15 @@ TYPE_OCORRENCIA = (
 				(3, u'Lixo na rua'),
 				(4, u'Iluminação'),
 					)
+GRAVIDADE_OCORRENCIA = (
+					(1, u'Baixo'),
+					(2, u'Médio'),
+					(3, u'Grave'),)
 
 class Marcadores(models.Model):
 	marcador_nome = models.CharField(verbose_name=u'Nome:', max_length=100)
 	marcador_descricao = models.CharField(verbose_name=u'Descrição', max_length=300)
+	marcador_nivel = models.CharField(verbose_name=u'Nível:', max_length=50)
 	marcador_tipo = models.CharField(verbose_name=u'Tipo:', max_length=100)
 	marcador_endereco = models.CharField(verbose_name=u'Endereco:', max_length=100)
 	marcador_lat = models.CharField(verbose_name=u'Latitude:', max_length=100)	
@@ -23,8 +28,10 @@ class Marcadores(models.Model):
 
 class MarcadoresForm(forms.Form):
 	marcador_form_nome = forms.CharField(label='Titulo:', max_length=100)
+	marcador_form_nivel = forms.CharField(label='Nível', max_length=50, widget=forms.Select(choices=GRAVIDADE_OCORRENCIA))
 	marcador_form_tipo = forms.CharField(label='Tipo da Ocorrência', max_length=10, widget=forms.Select(choices=TYPE_OCORRENCIA))
 	marcador_form_descricao = forms.CharField(label='Descrição',max_length=300, widget=forms.Textarea)
 	marcador_form_endereco = forms.CharField(label='Endereço', max_length=100)
-	marcador_form_lat = forms.CharField(label='Latitude', max_length=100)
-	marcador_form_lon = forms.CharField(label='Longitude', max_length=100)
+	marcador_form_lat = forms.CharField(label='', max_length=100, widget=forms.HiddenInput())
+	marcador_form_lon = forms.CharField(label='', max_length=100,  widget=forms.HiddenInput())
+#	marcador_form_lon = forms.CharField(label='Longitude', max_length=100,  widget=forms.TextInput(attrs={'class':'oculta'}))
