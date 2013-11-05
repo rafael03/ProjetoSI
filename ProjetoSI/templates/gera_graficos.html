@@ -25,9 +25,9 @@
         data.addColumn('number', 'Slices');
         data.addRows([
         	{% for nivel in ocorrencias %}
-          		{% if lista.marcador_nivel == '1' %}
+          		{% if nivel.marcador_nivel == '1' %}
 					['Baixo', {{nivel.contagem}}],
-				{% elif lista.marcador_nivel == '2' %}
+				{% elif nivel.marcador_nivel == '2' %}
 					['Medio', {{nivel.contagem}}],
 				{% else %}
 					['Grave', {{nivel.contagem}}],
@@ -91,19 +91,6 @@
 			</tr>
 		{% endfor %}
 	</table>
-<script>
-		nivel = $("#nivel").text()
-		console.log(nivel)
-		switch (nivel){
-		case 1:
-			$("#nivel").text() = 'Baixo'
-		case 2:
-			valor_nivel = 'Medio'
-		case 3:
-			valor_nivel = 'Grave'		
-		}
-		$("#nivel").val() = valor_nivel
-	</script>
 </div>
 {% endblock %}
 
