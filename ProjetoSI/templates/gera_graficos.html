@@ -46,16 +46,25 @@
         chart.draw(data, options);
       }
     </script>
+<div class="row-container">
+	<div class="span4">
+		<br><br><br><br>
+		<h4>Informações sobre o Gráfico</h4>
+		
+		<img src='/static/imagens/icone_baixo_nivel.png'>Gravidade Baixa
+		<br><br>
+		<img src='/static/imagens/icone_meio_nivel.png'>Gravidade Média
+		<br><br>
+		<img src='/static/imagens/icone_alto_nivel.png'>Gravidade Alta
+		<br><br>
+	</div>
 
     <!--Div that will hold the pie chart-->
-    <div id="chart_div"></div>
+    <div id="chart_div" class="span6">
+<!--     	Aqui será gerado o Grafico em Pizza -->
+    </div>
+</div>
 <div class="row-container">
-	{% for lista in ocorrencias %}
-	{% if lista.marcador_nivel == '1' %}
-                <h1> heloo </h1>
-            {% endif %}
-	{% endfor %}
-	 
 	<table class="table table-bordered table-striped table-hover">
 		<tr>
 			<td>ID</td>
@@ -72,7 +81,7 @@
            
 			<tr>
 				<td>{{lista.id}}</td>
-				<td id='nome'>{{lista.marcador_nome}}</td>
+				<td>{{lista.marcador_nome}}</td>
 				
 					{% if lista.marcador_nivel == '1' %}
 						<td id='nivel'>Baixo</td>
