@@ -16,7 +16,7 @@ def home(request):
                               RequestContext(request))
 
 
-def cadastra_ocorrencia(request):
+def ocorrencias(request):
     
     if request.method == 'GET':
         lista = Marcadores.objects.all()

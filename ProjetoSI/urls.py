@@ -7,8 +7,8 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'mapas.views.home', name='home'),
-    url(r'^$', 'mapas.views.cadastra_ocorrencia', name=''),
-    url(r'^mapa/', 'mapas.views.cadastra_ocorrencia', name='mapa'),
+    url(r'^$', 'mapas.views.ocorrencias', name=''),
+    url(r'^mapa/', 'mapas.views.ocorrencias', name='mapa'),
     url(r'^lista_de_ocorrencias/', 'mapas.views.lista_de_ocorrencias', name='lista_de_ocorrencias'),
     url(r'^mostra_pontos/', 'mapas.views.mostra_pontos', name='mostra_pontos'),
 
