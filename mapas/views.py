@@ -17,6 +17,18 @@ def home(request):
 
 
 def cadastra_ocorrencia(request):
+    
+    if request.method == 'GET':
+        lista = Marcadores.objects.all()
+        context = {}
+        context['ocorrencias'] = lista
+        formulario = MarcadoresForm()
+        return render(request, 'mapa.html', {
+        'formulario': formulario,
+        'ocorrencias': lista
+        })
+    
+    
     if request.method == 'POST':
         formulario = MarcadoresForm(request.POST)
         if formulario.is_valid():
